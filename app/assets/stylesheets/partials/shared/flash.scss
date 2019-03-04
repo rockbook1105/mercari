@@ -1,0 +1,15 @@
+.flash {
+  width: 100%;
+  padding: 20px;
+  font-size: 16px;
+
+  &--notice {
+    color: #0099e8;
+    background-color: #e6f7ff;
+  }
+
+  &--alert {
+    color: #e82000;
+    background-color: #fad2d2;
+  }
+}

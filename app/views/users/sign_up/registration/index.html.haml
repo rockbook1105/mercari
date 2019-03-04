@@ -1,0 +1,18 @@
+.single-container
+  = render "shared/single_header"
+
+  %main.single-main
+    %section.l-single-container
+      %h2.l-single-head 新規会員登録
+      .l-single-inner
+        .l-single-content
+          = link_to users_sign_up_address_path, class: "btn-default btn-email" do
+            = fa_icon "envelope"
+            メールアドレスで登録
+          = link_to user_facebook_omniauth_callback_path, class: "sns-btn sns-btn-facebook" do
+            = fa_icon "facebook"
+            Facebookでログイン
+          = link_to user_google_oauth2_omniauth_callback_path, class: "sns-btn sns-btn-google" do
+            = fa_icon "google"
+            Googleでログイン
+  = render "shared/single_footer"

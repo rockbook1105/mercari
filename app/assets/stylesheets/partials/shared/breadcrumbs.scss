@@ -1,0 +1,37 @@
+.breadcrumbs-wrapper {
+  position: relative;
+  background: #fff;
+  border-top: 1px solid #eee;
+  -webkit-box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.16);
+  box-shadow: 0 3px 3px 0 rgba(0, 0, 0, 0.16);
+
+  ul {
+    width: 1020px;
+    margin: 0 auto;
+    padding: 17px 0 16px;
+    overflow: visible;
+    white-space: normal;
+  }
+
+  li {
+    display: inline-block;
+    margin: 0 8px;
+    font-size: 14px;
+    line-height: 1.2;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+
+    &:first-child {
+      margin-left: 0;
+    }
+
+    &:last-child {
+      margin-right: 0;
+      font-weight: bold;
+    }
+  }
+
+  a {
+    color: #333;
+  }
+}

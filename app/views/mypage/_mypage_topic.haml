@@ -1,0 +1,32 @@
+.mypage-tab-container.mypage-tab-container--notification
+  %ul.mypage-tabs
+    %li.news_list.active
+      %h3
+        = link_to "お知らせ", "#news_content"
+    %li.todo_list
+      %h3
+        = link_to "やることリスト", "#todo_content"
+  .mypage-tab-content
+    %ul.mypage-tab-panel.active#news_content
+      %li
+        = link_to "", class: "mypage-item-link" do
+          %figure
+            = image_tag "mercari_profile", width: 48
+          .mypage-item-link__body
+            %span  事務局から個別メッセージ「【テレビ取材ご協力のお願い】メルカリをユニークに使っている方、大募集！」
+            .mypage-date<>
+              = fa_icon "clock-o"
+              2日前
+          = fa_icon "chevron-right"
+      %li
+        = link_to "", class: "mypage-item-link" do
+          %figure
+            = image_tag "mercari_profile", width: 48
+          .mypage-item-link__body
+            %span 初出品ありがとうございます！5品出品すると売れる確率が約80％まで上がるというデータがあります。もう少し出品してみませんか？
+            .mypage-date<>
+              = fa_icon "clock-o"
+              2日前
+          = fa_icon "chevron-right"
+  .mypage-tab-content
+    %ul.mypage-tab-panel.active#todo_content

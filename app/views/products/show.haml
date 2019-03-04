@@ -1,0 +1,178 @@
+= render 'shared/global_header'
+.breadcrumbs-wrapper
+  - breadcrumb :product, @product
+  = breadcrumbs style: :ul, separator: '>'
+
+.common-container
+  .common-side
+    .common-nav
+    .common-ad
+      = link_to "" do
+        = image_tag 'side_banner'
+  .item-content
+    .item-detail-container
+      %h2.item-name #{@product.name}
+      .item-main-content
+        .item-main-content__images
+          %ul.thumb-items
+            - @product.images.each do |hoge|
+              - if @product.purchased?
+                %li.thumb-items__list.thumb-items__list--sold
+                  .thumb-items__sold SOLD
+              - elsif @product.published == false
+                %li.thumb-items__list.thumb-items__list--unpublished
+                  .thumb-items__unpublished 公開停止中
+                  = link_to "#" do
+                    = image_tag hoge.image_url, class: "thumb-items__photo"
+              - else
+                %li.thumb-items__list
+                  = link_to "#" do
+                    = image_tag hoge.image_url, class: "thumb-items__photo"
+
+          %ul.thumb-item-nav
+            - @product.images.each do |hoge|
+              %li.thumb-item-nav__list
+                = link_to "#" do
+                  = image_tag hoge.image_url, class: "thumb-item-nav__photo"
+        %table.item-main-content__detail
+          %tbody
+            %tr
+              %th 出品者
+              %td
+                = link_to @product.user.nickname, ""
+                .user-ratings
+                  .user-ratings__item
+                    = fa_icon "smile-o"
+                    %span 1
+                  .user-ratings__item
+                    = fa_icon "meh-o"
+                    %span 1
+                  .user-ratings__item
+                    = fa_icon "frown-o"
+                    %span 1
+            %tr
+              %th カテゴリー
+              %td
+            %tr
+              %th ブランド
+              %td
+            %tr
+              %th 商品の状態
+              %td #{ @product.status_i18n }
+            %tr
+              %th 配送料の負担
+              %td #{ @product.shipping_fee_charges_on_i18n }
+            %tr
+              %th 配送の方法
+              %td #{ @product.shipping_method_i18n }
+            %tr
+              %th 配送元地域
+              %td #{ @product.shipping_from }
+            %tr
+              %th 発送日の目安
+              %td #{ @product.deliverable_days_i18n }
+
+      .item-price-content
+        %span.item-price-content__price ¥ #{ @product.price.to_s(:delimited) }
+        %span.item-price-content__tax (税込)
+        %span.item-price-content__shipping-fee 送料込み
+
+      - if @product.purchased?
+        = link_to "売り切れました", "", class: "item-buy-btn item-buy-btn--purchased"
+      - elsif !(current_user == @product.user)
+        = link_to "購入画面に進む", new_product_purchase_path(@product), class: "item-buy-btn"
+      = simple_format @product.detail, class: "item-detail-content"
+      = render_item_btns(@product)
+
+    = render_publish_status_btns(@product)
+
+    .comment-container
+      .comment-content
+        %ul.comment-list
+          %li.comment-element
+            = link_to "", class: "comment-user" do
+              %figure
+                .comment-user__icon
+                  = image_tag "member_photo_noimage_thumb"
+                %figcaption.comment-user__name
+                  ホゲホゲ
+            .comment-body
+              .comment-body__text
+                値引きしてください！！！！！！！！！！！！！
+              .comment-body__icons
+                .comment-body__left
+                  = fa_icon "clock-o"
+                  %span 20日前
+                .comment-body__right
+                  = link_to "" do
+                    = fa_icon "flag"
+      .comment-content
+        .comment-form
+          %p 相手のことを考え丁寧なコメントを心がけましょう。不快な言葉遣いなどは利用制限や退会処分となることがあります。
+          %textarea.textarea-default
+          %button.comment-submit-btn
+            %span コメントする
+
+    %ul.nav-item-links
+      %li.nav-item-links__prev
+        = link_to do
+          = fa_icon "chevron-left"
+          こんちゃあああ
+      %li.nav-item-links__next
+        = link_to do
+          こんちゃあああ
+          = fa_icon "chevron-right"
+
+    .sns-share-container
+      %ul.item-sns-btns
+        %li.item-sns-btn.item-sns-btn--facebook
+          = link_to do
+            = fa_icon "facebook"
+        %li.item-sns-btn.item-sns-btn--twitter
+          = link_to do
+            = fa_icon "twitter"
+        %li.item-sns-btn.item-sns-btn--pinterest
+          = link_to do
+            = fa_icon "pinterest"
+
+    .items-box-container
+      %h2.items-box-head
+        = link_to "#{ @product.user.nickname }さんのその他の出品"
+      .items-box-container__content
+        - @product.user.products.each do |product|
+          .items-box
+            = link_to do
+              %figure.items-box__photo
+                = image_tag product.images.first.image_url
+              .items-box__body
+                %h3.items-box__name
+                  = product.name
+                .items-box__num
+                  .items-box__price
+                    ¥ #{product.price.to_s(:delimited)}
+                  .items-box__likes
+                    = fa_icon "heart"
+                    %span 4
+                  %p.items-box__tax (税込)
+
+    .items-box-container
+      %h2.items-box-head
+        = link_to "<ブランド> その他の商品"
+      .items-box-container__content
+        - 6.times do
+          .items-box
+            = link_to do
+              %figure.items-box__photo
+                = image_tag "item_sample.jpeg"
+              .items-box__body
+                %h3.items-box__name
+                  ★hysteric glamorUSED加工Sデニム スキニーパンツ★
+                .items-box__num
+                  .items-box__price
+                    ¥ 1,888
+                  .items-box__likes
+                    = fa_icon "heart"
+                    %span 4
+                  %p.items-box__tax (税込)
+
+= render 'shared/global_footer'

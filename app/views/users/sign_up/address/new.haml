@@ -1,0 +1,54 @@
+.single-container
+  = render 'shared/single_header'
+
+  .single-main
+    .single-panel
+      .single-panel__sign-up
+        %h2 会員情報入力
+
+      .single-panel__inner
+        .single-panel__contents
+          = form_with(model: @address, url: users_sign_up_address_path, local: true) do |f|
+            .form-group
+              = f.label :family_name, "姓(全角)"
+              %span.form-require 必須
+              = f.text_field :family_name, class: "input-default input-with-margin"
+            .form-group
+              = f.label :first_name, "名(全角)"
+              %span.form-require 必須
+              = f.text_field :first_name, class: "input-default input-with-margin"
+            .form-group
+              = f.label :family_name_kana, "姓カナ(全角)"
+              %span.form-require 必須
+              = f.text_field :family_name_kana, class: "input-default input-with-margin"
+            .form-group
+              = f.label :first_name_kana, "名カナ(全角)"
+              %span.form-require 必須
+              = f.text_field :first_name_kana, class: "input-default input-with-margin"
+            .form-group
+              = f.label :zipcode, "郵便番号"
+              %span.form-require 必須
+              = f.text_field :zipcode, class: "input-default input-with-margin"
+            .form-group
+              = f.label :prefecture, "都道府県"
+              %span.form-require 必須
+              = f.text_field :prefecture, class: "input-default input-with-margin"
+            .form-group
+              = f.label :city, "市区町村"
+              %span.form-require 必須
+              = f.text_field :city, class: "input-default input-with-margin"
+            .form-group
+              = f.label :block_number, "番地"
+              %span.form-require 必須
+              = f.text_field :block_number, class: "input-default input-with-margin"
+            .form-group
+              = f.label :building_name, "建物名"
+              %span.form-arbitrary 任意
+              = f.text_field :building_name, class: "input-default input-with-margin"
+            .form-group
+              = f.label :phone_number, "電話"
+              %span.form-arbitrary 任意
+              = f.text_field :password, class: "input-default input-with-margin"
+            = f.submit "次へ進む", class: 'red-submit-btn'
+
+  = render 'shared/single_footer'

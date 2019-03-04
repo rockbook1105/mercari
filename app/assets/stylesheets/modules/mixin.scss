@@ -1,0 +1,20 @@
+@mixin clearFix {
+  &::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+}
+
+@mixin textCenter {
+  text-align: center;
+}
+
+@mixin commonFormLabel {
+  margin: 0 0 0 8px;
+  padding: 2px 4px;
+  color: #fff;
+  font-size: 12px;
+  vertical-align: top;
+  border-radius: 2px;
+}

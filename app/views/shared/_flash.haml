@@ -1,0 +1,4 @@
+- flash.each do |key,value|
+  - key = "notice" if key == "notice"
+  - key = "alert" if key == "alert"
+  = content_tag :div, value, class: "flash flash--#{key}"

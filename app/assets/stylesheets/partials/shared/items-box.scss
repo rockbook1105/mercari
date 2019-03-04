@@ -1,0 +1,121 @@
+.items-box-container {
+  min-width: auto;
+  max-width: 940px;
+  margin: 0 auto;
+
+  &__name {
+    @include textCenter;
+    margin: 26px 11px;
+    font-size: 22px;
+
+    a {
+      color: #0099e8;
+      font-weight: bold;
+      text-decoration: none;
+    }
+  }
+
+  &__content {
+    @include clearFix;
+    width: 100%;
+  }
+}
+
+.items-box-head {
+  margin: 24px 0 8px;
+
+  a {
+    font-size: 22px;
+  }
+}
+
+.items-box {
+  float: left;
+  width: 220px;
+  margin: 0 0 20px 20px;
+  background: #fff;
+
+  :nth-child(odd) {
+    margin: 0;
+  }
+
+  &:nth-child(2n + 1) {
+    margin: 0 0 20px 20px;
+  }
+
+  &:nth-child(3n + 1) {
+    margin: 0 0 20px;
+  }
+
+  &:nth-child(5n + 1) {
+    margin-left: 0;
+  }
+
+  &:nth-child(n + 4):last-child {
+    display: block;
+    margin: 0 0 0 20px;
+  }
+
+  &__photo {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    width: 220px;
+    height: 220px;
+    padding: 0 0 100%;
+    overflow: hidden;
+
+    img {
+      position: absolute;
+      z-index: 1;
+      width: auto;
+      max-width: 100%;
+      height: auto;
+    }
+  }
+
+  &__body {
+    min-height: 110px;
+    padding: 16px;
+  }
+
+  &__name {
+    position: relative;
+    height: 3em;
+    overflow: hidden;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 1.5;
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  &__num {
+    margin: 8px 0 0;
+    @include clearFix;
+  }
+
+  &__price {
+    float: left;
+    color: #333;
+    font-weight: 600;
+    font-size: 20px;
+  }
+
+  &__likes {
+    float: right;
+    color: #333;
+    font-weight: 400;
+    font-size: 16px;
+  }
+
+  &__tax {
+    clear: both;
+    font-size: 10px;
+  }
+
+  a {
+    display: block;
+    color: #333;
+  }
+}

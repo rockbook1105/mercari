@@ -1,0 +1,50 @@
+.single-container
+  = render 'shared/single_header'
+
+  .single-main
+    .single-panel
+      .single-panel__sign-up
+        %h2 支払い方法
+
+      .single-panel__inner
+        .single-panel__contents
+          = form_with(model: @payjp_card_form, url: users_sign_up_payment_methods_path, local: true) do |f|
+            .form-group
+              = f.label :number, "カード番号"
+              %span.form-require 必須
+              = f.text_field :number, class: "input-default input-with-margin", placeholder: "半角数字のみ"
+              %ul.sign-up-card-list
+                %li
+                  = image_tag "visa.svg"
+                %li
+                  = image_tag "master-card.svg"
+                %li
+                  = image_tag "saison-card.svg"
+                %li
+                  = image_tag "jcb.svg"
+                %li
+                  = image_tag "dinersclub.svg"
+                %li
+                  = image_tag "discover.svg"
+            .form-group
+              = f.label :exp_date, "有効期限"
+              %span.form-require 必須
+              %br
+              .select-wrap
+                = f.select :exp_month, @exp_month_options, {}, class: "select-default"
+                = fa_icon "chevron-down", class: "icon-chevron-down"
+              %span 月
+              %ul.hoge
+              .select-wrap
+                = f.select :exp_year, @exp_year_options , {}, class: "select-default"
+                = fa_icon"chevron-down", class: "icon-chevron-down"
+              %span 年
+            .form-group
+              = f.label :cvc, "セキュリティコード"
+              %span.form-require 必須
+              = f.password_field :cvc, autocomplete: "off", class: "input-default input-with-margin", placeholder: "カード背面4桁もしくは3桁の番号"
+              .sign-up-seq-code
+                .sign-up-seq-code__text
+            = f.submit "次へ進む", class: 'red-submit-btn'
+
+  = render 'shared/single_footer'

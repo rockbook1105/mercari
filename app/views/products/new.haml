@@ -1,0 +1,124 @@
+.single-container
+  = render 'shared/single_header'
+
+  .single-main
+    .single-panel
+      .single-panel__sign-up
+        %h2 商品の情報を入力
+
+      = form_with model: @product, url: products_path, local: true do |f|
+        .sell-form
+          .sell-upload-box
+            %h3.sell-upload-box__head
+              出品画像
+              %span.form-require 必須
+            %p 最大4枚まで画像をアップロードできます。
+            .sell-dropbox-container
+              = f.fields_for :images do |c|
+                = c.file_field :image
+
+        .sell-content
+          .form-group
+            = f.label :name, "商品名"
+            %span.form-require 必須
+            = f.text_field :name, class: "input-default input-with-margin"
+          .form-group
+            = f.label :detail, "商品の説明"
+            %span.form-require 必須
+            = f.text_area :detail, class: "textarea-default input-with-margin"
+
+        .sell-content
+          %h3.sell-content__head 商品の詳細
+          .sell-content__formbox
+            .form-group
+              %label{ for: 'name' } カテゴリー
+              %span.form-require 必須
+              %br
+              .select-wrap
+                = select_tag :payment_card_expire_mm, "", class: "select-default"
+                = fa_icon "chevron-down", class: "icon-chevron-down"
+            .form-group
+              %label{ for: 'name' } 商品の状態
+              %span.form-require 必須
+              %br
+              .select-wrap
+                = f.select :status, Product.statuses_i18n.invert, {}, class: "select-default"
+                = fa_icon "chevron-down", class: "icon-chevron-down"
+
+        .sell-content
+          %h3.sell-content__head 配送について
+          .sell-content__formbox
+            .form-group
+              = f.label :shipping_fee_charges_on, "配送量の負担"
+              %span.form-require 必須
+              %br
+              .select-wrap
+                = f.select :shipping_fee_charges_on, Product.shipping_fee_charges_ons_i18n.invert, {}, {class: "select-default"}
+                = fa_icon "chevron-down", class: "icon-chevron-down"
+
+            .form-group
+              = f.label :shipping_method, "配送の方法"
+              %span.form-require 必須
+              %br
+              .select-wrap
+                = f.select :shipping_method, Product.shipping_methods_i18n.invert, {}, {class: "select-default"}
+                = fa_icon "chevron-down", class: "icon-chevron-down"
+
+            .form-group
+              = f.label :shipping_from, "発送元の地域"
+              %span.form-require 必須
+              %br
+              .select-wrap
+                = f.collection_select :shipping_from, JpPrefecture::Prefecture.all, :code, :name, {}, {class: "select-default"}
+                = fa_icon "chevron-down", class: "icon-chevron-down"
+
+            .form-group
+              = f.label :deliverable_days, "発送までの日数"
+              %span.form-require 必須
+              %br
+              .select-wrap
+                = f.select :deliverable_days, Product.deliverable_days_i18n.invert, {}, {class: "select-default"}
+                = fa_icon "chevron-down", class: "icon-chevron-down"
+
+        .sell-content
+          %h3.sell-content__head 販売価格(300〜9,999,999)
+          .sell-content__formbox
+            %ul.sell-price
+              %li.form-group
+                .sell-price__contents
+                  .sell-price__label
+                    = f.label :price, "価格"
+                    %span.form-require 必須
+                  .sell-price__input
+                    ￥
+                    %div
+                      = f.text_field :price, class: "input-default input-with-margin"
+
+              %li
+                .sell-price__contents
+                  .left-side 販売手数料(10%)
+                  .right-side ¥88888
+
+              %li
+                .sell-price__contents
+                  .left-side.left-side--bold 販売利益
+                  .right-side.right-side--bold ¥8888888
+
+        .sell-content
+          %div
+            %p
+              %a<> 禁止されている出品
+              、
+              %a<> 行為
+              を必ずご確認ください。
+            %p
+              またブランド品でシリアルナンバー等がある場合はご記載ください。
+              %a<> 偽ブランド
+              の販売は犯罪であり処罰される可能性があります。
+            %p
+              また、出品をもちまして
+              %a<> 加盟店規約
+              に同意したことになります。
+          = f.submit "出品する", class: "red-submit-btn"
+          %a.grey-cancel-btn キャンセルする
+  = render 'shared/single_footer'

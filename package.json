@@ -1,0 +1,11 @@
+{
+  "name": "freemarket_sample",
+  "private": true,
+  "dependencies": {
+    "stylelint-config-standard": "^18.2.0"
+  },
+  "devDependencies": {
+    "prettier-stylelint": "^0.4.2",
+    "stylelint-config-rational-order": "0.0.2"
+  }
+}

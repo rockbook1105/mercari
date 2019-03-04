@@ -1,0 +1,485 @@
+.item-detail-container {
+  padding: 24px 40px 40px;
+  background: #fff;
+}
+
+.item-name {
+  font-size: 24px;
+  text-align: center;
+  word-wrap: break-word;
+}
+
+.item-buy-btn {
+  display: block;
+  height: 60px;
+  margin: 16px 0 0;
+  color: #fff;
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 60px;
+  text-align: center;
+  background: #ea352d;
+  -webkit-transition: all ease-out 0.3s;
+  transition: all ease-out 0.3s;
+
+  &--purchased {
+    background: #ccc;
+    pointer-events: none;
+  }
+}
+
+.item-content {
+  float: left;
+  width: 700px;
+}
+
+.item-main-content {
+  @include clearFix;
+  margin: 16px 0 0;
+
+  &__images {
+    float: left;
+    width: 300px;
+  }
+
+  &__detail {
+    float: right;
+    width: 100%;
+    max-width: 300px;
+    height: 375px;
+    margin: 0 auto;
+    border: 1px solid #f5f5f5;
+    border-collapse: collapse;
+
+    th {
+      width: 39%;
+      padding: 8px;
+      font-weight: 400;
+      text-align: left;
+      background: #fafafa;
+      border: 1px solid #f5f5f5;
+      border-collapse: collapse;
+    }
+
+    td {
+      width: 61%;
+      padding: 8px;
+      background: #fff;
+      border: 1px solid #f5f5f5;
+      border-collapse: collapse;
+    }
+
+    .user-ratings__item {
+      display: inline-block;
+      margin: 8px 0 0 16px;
+      font-size: 16px;
+
+      &:first-child {
+        margin: 0;
+      }
+
+      .fa-smile-o {
+        color: #ef5185;
+      }
+
+      .fa-meh-o {
+        color: #fba933;
+      }
+
+      .fa-frown-o {
+        color: #6ab5d8;
+      }
+    }
+  }
+
+  .thumb-items {
+    &__sold {
+      position: absolute;
+      top: 24px;
+      left: 0;
+      z-index: 2;
+      color: #fff;
+      font-weight: bold;
+      font-size: 28px;
+    }
+
+    &__unpublished {
+      position: absolute;
+      top: 34px;
+      left: -5px;
+      z-index: 2;
+      color: #fff;
+      font-weight: bold;
+      font-size: 18px;
+      transform: rotate(-45deg);
+    }
+
+    &__list {
+      position: relative;
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      width: 300px;
+      height: 300px;
+      background: #fafafa;
+
+      &--sold {
+        position: absolute;
+        top: 24px;
+        left: 0;
+        border-color: #888 transparent transparent transparent;
+
+        &:after {
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 1;
+          display: block;
+          width: 0;
+          height: 0;
+          border-width: 120px 120px 0 0;
+          border-style: solid;
+
+          border-color: #ea352d transparent transparent transparent;
+          content: '';
+        }
+      }
+
+      &--unpublished {
+        position: absolute;
+        top: 24px;
+        left: 0;
+
+        &:after {
+          position: absolute;
+          top: 0;
+          left: 0;
+          z-index: 1;
+          display: block;
+          width: 0;
+          height: 0;
+          border-width: 120px 120px 0 0;
+          border-style: solid;
+          border-color: #888 transparent transparent transparent;
+          content: '';
+        }
+      }
+    }
+
+    &__photo {
+      width: auto;
+      max-width: 100%;
+      height: auto;
+      max-height: 100%;
+      vertical-align: middle;
+    }
+  }
+
+  .thumb-item-nav {
+    &__list {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
+      width: 75px;
+      height: 75px;
+    }
+
+    &__photo {
+      width: auto;
+      max-width: 100%;
+      height: auto;
+      max-height: 100%;
+      vertical-align: middle;
+    }
+  }
+}
+
+.item-price-content {
+  margin: 24px 0 0;
+  text-align: center;
+
+  &__price {
+    margin: 0 16px 0 0;
+    font-weight: bold;
+    font-size: 50px;
+  }
+
+  &__tax {
+    font-size: 10px;
+  }
+
+  &__shipping-fee {
+    font-size: 16px;
+  }
+}
+
+.item-detail-content {
+  margin: 24px 0 0;
+  padding: 32px 0 0;
+  font-size: 18px;
+  line-height: 1.5;
+}
+
+.item-btns {
+  @include clearFix;
+  margin: 16px 0 0;
+  font-size: 0;
+
+  &__left {
+    float: left;
+  }
+
+  &__right {
+    float: right;
+    margin: 8px 0 0;
+  }
+}
+
+.item-btn {
+  display: inline-block;
+  padding: 8px 16px;
+  font-size: 14px;
+  border-radius: 40px;
+  cursor: pointer;
+  -webkit-transition: all ease-out 0.3s;
+  transition: all ease-out 0.3s;
+
+  &--like {
+    color: #333;
+    background: #f5f5f5;
+    border: 1px solid #f5f5f5;
+  }
+
+  &--report {
+    margin: 0 0 0 16px;
+    margin: 0 0 0 8px;
+    color: #333;
+    background: #f5f5f5;
+  }
+}
+
+.safety-measure {
+  font-size: 14px;
+}
+
+// comments
+.comment-container {
+  margin: 8px 0 0;
+}
+
+.comment-content {
+  padding: 24px;
+  background-color: #fff;
+}
+
+.comment-list {
+  margin: 0;
+}
+
+.comment-element {
+  @include clearFix;
+  margin: 60px 0 0;
+
+  &:first-child {
+    margin: 1.5em 0 0;
+  }
+}
+
+.comment-user {
+  position: relative;
+  top: -20px;
+  float: left;
+  color: #333;
+
+  &__icon {
+    width: 40px;
+    height: 40px;
+    overflow: hidden;
+    border-radius: 50%;
+
+    img {
+      width: 100%;
+    }
+  }
+
+  &__name {
+    position: absolute;
+    top: 0;
+    left: 56px;
+    width: 600px;
+    min-width: 600px;
+    max-width: 100%;
+    height: 1.2em;
+    overflow: hidden;
+    font-weight: bold;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+  }
+}
+
+.comment-body {
+  position: relative;
+  float: right;
+  width: 600px;
+  padding: 16px;
+  line-height: 1.5;
+  word-break: break-all;
+  background: #eef0f4;
+  border-radius: 15px;
+
+  &:before {
+    position: absolute;
+    top: 8px;
+    left: -16px;
+    display: inline-block;
+    border: 6px solid transparent;
+    border-right: 18px solid #eef0f4;
+    content: '';
+    transform: rotate(45deg);
+  }
+
+  &__icons {
+    @include clearFix;
+    margin: 8px 0 0;
+  }
+
+  &__left {
+    float: left;
+    color: #aaa;
+  }
+
+  &__right {
+    float: right;
+
+    a {
+      color: #aaa;
+      text-decoration: none;
+    }
+  }
+}
+
+.comment-form {
+  p {
+    padding: 8px;
+    font-size: 14px;
+    background: #fff6de;
+  }
+}
+
+.comment-submit-btn {
+  width: 100%;
+  margin: 8px 0 0;
+  color: #fff;
+  font-size: 0;
+  line-height: 48px;
+  text-align: center;
+  background: #aaa;
+  border: 1px solid #aaa;
+  cursor: pointer;
+  transition: all ease-out 0.3s;
+
+  span {
+    font-size: 14px;
+    vertical-align: middle;
+  }
+}
+
+.nav-item-links {
+  @include clearFix;
+  margin: 24px 0 0;
+  font-size: 14px;
+
+  li {
+    position: relative;
+    word-wrap: break-word;
+  }
+
+  &__prev {
+    float: left;
+    padding: 0 0 0 14px;
+  }
+
+  &__next {
+    float: right;
+    padding: 0 14px 0 0;
+    text-align: right;
+  }
+}
+
+.sns-share-container {
+  margin: 24px 0 0;
+  padding: 32px 0 24px;
+  background: #fff;
+}
+
+.item-sns-btns {
+  margin: 16px 0 0;
+  font-size: 0;
+  text-align: center;
+
+  .item-sns-btn {
+    display: inline-block;
+    margin: 0 8px 8px 0;
+    text-align: center;
+    vertical-align: middle;
+    border-radius: 4px;
+
+    a {
+      color: #fff;
+      font-size: 18px;
+      border-radius: 4px;
+    }
+
+    i {
+      width: 44px;
+      height: 44px;
+      line-height: 44px;
+      border-radius: 4px;
+    }
+
+    &--facebook {
+      background-color: #385185;
+    }
+
+    &--twitter {
+      background-color: #5d9dc9;
+    }
+
+    &--pinterest {
+      background-color: #aa262a;
+    }
+  }
+}
+
+.publish_status-btns {
+  margin: 24px 0 24px 0;
+  padding: 8px 16px 8px 16px;
+  background: #fff;
+
+  &__btn {
+    display: block;
+    width: 100%;
+    margin: 16px 0 16px 0;
+    color: #fff;
+    font-size: 14px;
+    line-height: 48px;
+    text-align: center;
+    cursor: pointer;
+    transition: all ease-out 0.3s;
+
+    &--red {
+      background: #ea352d;
+      border: 1px solid #ea352d;
+    }
+
+    &--grey {
+      background: #aaa;
+      border: 1px solid #aaa;
+    }
+  }
+
+  p {
+    font-size: 16px;
+    text-align: center;
+  }
+}

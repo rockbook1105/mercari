@@ -1,0 +1,13 @@
+.item-btns
+  .item-btns__left
+    %button.item-btn.item-btn--like
+      = fa_icon "heart-o"
+      %span いいね！
+      %span 0
+    %a.item-btn.item-btn--report
+      = fa_icon "flag"
+      %span 不適切な商品の報告
+  .item-btns__right
+    = link_to "", class: "safety-measure" do
+      = fa_icon "lock"
+      あんしん・あんぜんへの取り組み

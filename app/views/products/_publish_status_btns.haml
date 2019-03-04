@@ -1,0 +1,8 @@
+.publish_status-btns
+  = link_to "商品を編集する", edit_product_path(product), class: "publish_status-btns__btn publish_status-btns__btn--red"
+  %p or
+  - if product.published == true
+    = link_to "出品を停止する", product_publications_path(product), method: :delete, class: "publish_status-btns__btn publish_status-btns__btn--grey"
+  - else
+    = link_to "出品を再開する", product_publications_path(product), method: :patch, class: "publish_status-btns__btn publish_status-btns__btn--red"
+  = link_to "商品を削除する", product_path(product), method: :delete, class: "publish_status-btns__btn publish_status-btns__btn--grey"
